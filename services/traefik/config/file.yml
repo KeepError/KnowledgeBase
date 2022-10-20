@@ -1,0 +1,22 @@
+http:
+  routers:
+    # Define a connection between requests and services
+    routerA:
+      rule: "Host(`a.example.com`)"
+      # If the rule matches, forward to the service (declared below)
+      service: serviceA
+    routerB:
+      rule: "Host(`b.example.com`)"
+      service: serviceB
+
+
+  services:
+    serviceA:
+      loadBalancer:
+        servers:
+        - url: http://192.158.1.38:1234
+
+    serviceB:
+      loadBalancer:
+        servers:
+        - url: http://192.158.1.38:9999

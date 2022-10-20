@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  traefik:
+    image: "traefik:v2.9"
+    container_name: "traefik"
+    ports:
+      - "80:80"
+      - "443:443"
+      # Expose Dashboard (not recommended in production):
+      - "8080:8080"
+    volumes:
+      # For docker provider:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+      - ./config:/etc/traefik
