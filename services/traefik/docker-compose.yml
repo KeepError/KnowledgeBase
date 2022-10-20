@@ -12,5 +12,4 @@ services:
     volumes:
       # For docker provider:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-
       - ./config:/etc/traefik
