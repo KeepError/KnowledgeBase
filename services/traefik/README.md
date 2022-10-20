@@ -3,9 +3,11 @@
 [Documentation](https://doc.traefik.io/traefik/)
 
 ## Config
-`file.yml` - dynamic config, no need to restart service after making changes
+`traefik-dynamic.yml` - dynamic config, no need to restart service after making changes
 
 `traefik.yml` - static config that refers to dynamic configs
+
+SSL certificate obtains automatically (email in config should be changed)
 
 ## Ports:
 

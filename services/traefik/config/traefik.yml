@@ -7,11 +7,32 @@ api:
   dashboard: true
 
 entryPoints:
+
   web:
     address: ":80"
-  websecure:
+    http:
+      redirections:
+        entryPoint:
+          to: web-secure
+          scheme: https
+          permanent: true
+
+  web-secure:
     address: ':443'
+    http:
+      tls:
+        certResolver: letsencrypt
+
+
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: email@example.com
+      storage: /etc/traefik/certs/acme.json
+      caServer: "https://acme-v02.api.letsencrypt.org/directory"
+      httpChallenge:
+        entryPoint: web-secure
 
 providers:
   file:
-    filename: "/etc/traefik/file.yml"
+    filename: "/etc/traefik/traefik-dynamic.yml"
