@@ -11,4 +11,19 @@ services:
       - 5432:5432
     volumes:
       - $PWD/pgdata:/var/lib/postgresql/data
+  
+  adminer:
+    container_name: local-adminer
+    image: adminer
+    ports:
+      - 8080:8080
+
+  pgadmin4:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    environment:
+       - PGADMIN_DEFAULT_EMAIL=user@domain.com
+       - PGADMIN_DEFAULT_PASSWORD=pwd
+    ports:
+      - 80:80
 
